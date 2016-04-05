@@ -6,8 +6,12 @@ export default Ember.Route.extend({
     return Ember.$.getJSON(url).then(function(responseJSON) {
       for (var i = 0; i < responseJSON.results.length; i++) {
         var youtubeUrl = "https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forUsername="+responseJSON.results[i].youtube_id+"&key=AIzaSyBfS3lQCRNCju3YjNtXyDvsz3E2l3eMYxA";
-        Ember.$.getJSON(youtubeUrl).then(function(response){
-          console.log(response.items[0].id);
+        Ember.$.getJSON(youtubeUrl).then(function(responceYoutube){
+          console.log(responceYoutube.items[0].contentDetails.relatedPlaylists.uploads);
+          var playlistUrl = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId="+responceYoutube.items[0].contentDetails.relatedPlaylists.uploads+"&key=AIzaSyBfS3lQCRNCju3YjNtXyDvsz3E2l3eMYxA";
+          Ember.$.getJSON(playlistUrl).then(function(responsePlaylist){
+            console.log(responsePlaylist);
+          });
         });
       }
     });
