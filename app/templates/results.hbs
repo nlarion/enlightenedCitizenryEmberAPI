@@ -1,11 +1,7 @@
-<ul>
-  {{model.kind}}
-  {{#each model.items as |legislator|}}
-    <li>
-      {{legislator.snippet.title}} <br>
-      {{legislator.snippet.description}} <br>
-      <img src="{{legislator.snippet.thumbnails.high.url}}" alt="" />
+Click a Name to list their Youtube videos:
 
-    </li>
+<ul>
+  {{#each model as |legislator|}}
+    <li> <a href="/congress/{{legislator.youtube_id}}">{{legislator.first_name}} {{legislator.last_name}}</a> <br>Contact: <a href=  {{legislator.contact_form}}>{{legislator.contact_form}}</a></li>
   {{/each}}
 </ul>

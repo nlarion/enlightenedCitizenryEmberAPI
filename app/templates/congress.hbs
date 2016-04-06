@@ -1,0 +1,9 @@
+<ul>
+  {{#each model.items as |legislator|}}
+    <li>
+      {{legislator.snippet.title}} <br>
+      {{legislator.snippet.description}} <br>
+      <img src="{{legislator.snippet.thumbnails.high.url}}" alt="" />
+    </li>
+  {{/each}}
+</ul>
